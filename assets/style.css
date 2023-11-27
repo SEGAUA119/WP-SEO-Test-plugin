@@ -1,0 +1,13 @@
+.wpss-search-form {
+    margin-bottom: 10px;
+}
+
+.wpss-table th,
+.wpss-table thead td {
+    text-align: center;
+}
+
+.wpss-table th .title,
+.wpss-table thead td .title {
+     margin-bottom: 4px;
+ }
