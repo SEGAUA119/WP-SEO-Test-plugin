@@ -5,8 +5,14 @@ class WPSS_DB_Search {
     /**
      * @var array
      */
-    private $ids;
-    private $search;
+    private array $ids;
+    /**
+     * @var string
+     */
+    private string $search;
+    /**
+     * @var bool
+     */
     private bool $search_completed;
 
     public function __construct( string $search )
@@ -15,7 +21,12 @@ class WPSS_DB_Search {
         $this->search_completed = FALSE;
     }
 
-    public function update_posts_title( string $update ) {
+    /**
+     * @param string $update
+     * @return WP_Post[]
+     */
+    public function update_posts_title(string $update ) : array
+    {
         $this->ids = $this->get_searched_post_ids();
         foreach( $this->ids as $post_id ) {
             print_r(get_the_title( $post_id ));
@@ -27,7 +38,12 @@ class WPSS_DB_Search {
         return $this->get_searched_posts();
     }
 
-    public function update_posts_content( string $update ) {
+    /**
+     * @param string $update
+     * @return WP_Post[]
+     */
+    public function update_posts_content(string $update ) : array
+    {
         $this->ids = $this->get_searched_post_ids();
         foreach( $this->ids as $post_id ) {
             wp_update_post(array(
@@ -38,7 +54,12 @@ class WPSS_DB_Search {
         return $this->get_searched_posts();
     }
 
-    public function update_posts_meta_title( string $update ) {
+    /**
+     * @param string $update
+     * @return WP_Post[]
+     */
+    public function update_posts_meta_title(string $update ) : array
+    {
         $this->ids = $this->get_searched_post_ids();
         foreach( $this->ids as $post_id ) {
             $meta = get_post_meta( $post_id, '_yoast_wpseo_title', TRUE );
@@ -47,7 +68,12 @@ class WPSS_DB_Search {
         return $this->get_searched_posts();
     }
 
-    public function update_posts_meta_desc( string $update ) {
+    /**
+     * @param string $update
+     * @return WP_Post[]
+     */
+    public function update_posts_meta_desc(string $update ) : array
+    {
         $this->ids = $this->get_searched_post_ids();
         foreach( $this->ids as $post_id ) {
             $meta = get_post_meta( $post_id, '_yoast_wpseo_metadesc', TRUE );
@@ -56,6 +82,9 @@ class WPSS_DB_Search {
         return $this->get_searched_posts();
     }
 
+    /**
+     * @return WP_Post[]
+     */
     public function get_searched_posts() : array
     {
         $posts = array();
@@ -72,8 +101,7 @@ class WPSS_DB_Search {
     }
 
     /**
-     * @param string $search
-     * @return WP_Post[]
+     * @return array
      */
     private function get_searched_post_ids() : array
     {

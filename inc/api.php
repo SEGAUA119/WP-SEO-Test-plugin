@@ -21,7 +21,7 @@ class WPSS_API
      * @param $nonce
      * @return void
      */
-    private function check_nonce($nonce ) : void
+    private function check_nonce( $nonce ) : void
     {
         if ( !wp_verify_nonce( $nonce, WPSEO_SEARCH_BASENAME ) ) {
             header( 'Status: 403 Forbidden' );

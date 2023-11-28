@@ -12,7 +12,6 @@
             var input_text = $(this).find('#post-search-input').val()
             $.ajax({
                 type : "get",
-                // dataType : "json",
                 url : ajax.url,
                 data : {
                     nonce: ajax.nonce,
